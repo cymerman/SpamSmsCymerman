@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpamSmsLicencjat.Formy;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,6 +30,13 @@ namespace SpamSmsLicencjat
             this.Hide();
             LogisticRegression lr = new LogisticRegression();
             lr.ShowDialog();
+        }
+
+        private void perceptronButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Perceptron pr = new Perceptron();
+            pr.ShowDialog();
         }
     }
 }

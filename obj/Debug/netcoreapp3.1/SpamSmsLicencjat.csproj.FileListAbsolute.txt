@@ -71,3 +71,4 @@ C:\Users\Mateusz\source\repos\SpamSmsLicencjat\SpamSmsLicencjat\obj\Debug\netcor
 C:\Users\Mateusz\source\repos\SpamSmsLicencjat\SpamSmsLicencjat\obj\Debug\netcoreapp3.1\SpamSmsLicencjat.csproj.CoreCompileInputs.cache
 C:\Users\Mateusz\source\repos\SpamSmsLicencjat\SpamSmsLicencjat\bin\Debug\netcoreapp3.1\en\FSharp.Core.resources.dll
 C:\Users\Mateusz\source\repos\SpamSmsLicencjat\SpamSmsLicencjat\bin\Debug\netcoreapp3.1\dane.csv
+C:\Users\Mateusz\source\repos\SpamSmsLicencjat\SpamSmsLicencjat\obj\Debug\netcoreapp3.1\SpamSmsLicencjat.Formy.Perceptron.resources
