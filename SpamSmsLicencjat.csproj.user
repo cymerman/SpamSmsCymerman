@@ -11,5 +11,8 @@
     <Compile Update="Formy\NaiveBayesForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formy\Perceptron.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -69,11 +69,11 @@
           }
         }
       },
-      "Deedle/1.1.5": {
+      "Deedle/2.0.1": {
         "runtime": {
-          "lib/net40/Deedle.dll": {
-            "assemblyVersion": "1.1.5.0",
-            "fileVersion": "1.1.5.0"
+          "lib/netstandard2.0/Deedle.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -1535,12 +1535,12 @@
       "path": "accord.statistics/3.8.0",
       "hashPath": "accord.statistics.3.8.0.nupkg.sha512"
     },
-    "Deedle/1.1.5": {
+    "Deedle/2.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-IeL6FoDAeo1PjBfXWQ8/mPcBgFb+1H6x0T7yfylDw8IgGBmrk++eQlMHZ+LKTwMi/2OSHXEd8gSYvVdemH54IA==",
-      "path": "deedle/1.1.5",
-      "hashPath": "deedle.1.1.5.nupkg.sha512"
+      "sha512": "sha512-nSf4QqjhlRWQ0eVNGu7RnmAmw4YUax9/IpAokjxmcCGL0FlxcqybflNsMP2J7lAbS0CxvZ2ObjFa2jaKnz+U5w==",
+      "path": "deedle/2.0.1",
+      "hashPath": "deedle.2.0.1.nupkg.sha512"
     },
     "FSharp.Core/4.3.1": {
       "type": "package",

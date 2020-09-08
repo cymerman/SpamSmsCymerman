@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YFFH6SCG8+JmzNhPWC4yYP+DbZtvwm9pWezExbRp1r3A2CoJ/bjA1PokOVxp6BYl9kuzapCjrA74dHTk0+CI6A==",
+  "dgSpecHash": "lvt2IdTWO+oh2PfrxhzZI8LLg1EZSaG21KfyQ9PSSLyKwtGSXkImJhLEX+9jyDLvFeIV26uOP/UTQeWCW7TtMw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Mateusz\\source\\repos\\SpamSmsLicencjat\\SpamSmsLicencjat\\SpamSmsLicencjat.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,7 @@
     "C:\\Users\\Mateusz\\.nuget\\packages\\accord.machinelearning\\3.8.0\\accord.machinelearning.3.8.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\accord.statistics\\3.8.0\\accord.statistics.3.8.0.nupkg.sha512",
-    "C:\\Users\\Mateusz\\.nuget\\packages\\deedle\\1.1.5\\deedle.1.1.5.nupkg.sha512",
+    "C:\\Users\\Mateusz\\.nuget\\packages\\deedle\\2.0.1\\deedle.2.0.1.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\fsharp.core\\4.3.1\\fsharp.core.4.3.1.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\microsoft.ml\\1.5.0\\microsoft.ml.1.5.0.nupkg.sha512",
@@ -111,16 +111,6 @@
       "warningLevel": 1,
       "message": "Pakiet „Accord.Controls 3.8.0” został przywrócony przy użyciu elementu „.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8” zamiast platformy docelowej projektu „.NETCoreApp,Version=v3.1”. Ten pakiet może nie być w pełni kompatybilny z Twoim projektem.",
       "libraryId": "Accord.Controls",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Pakiet „Deedle 1.1.5” został przywrócony przy użyciu elementu „.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8” zamiast platformy docelowej projektu „.NETCoreApp,Version=v3.1”. Ten pakiet może nie być w pełni kompatybilny z Twoim projektem.",
-      "libraryId": "Deedle",
       "targetGraphs": [
         ".NETCoreApp,Version=v3.1"
       ]
