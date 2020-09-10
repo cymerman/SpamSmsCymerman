@@ -11,7 +11,7 @@ namespace LogisticRegression
         private static string dataPath = Path.Combine(Environment.CurrentDirectory, "dane.tsv");
 
         public Microsoft.ML.Data.CalibratedBinaryClassificationMetrics metrics;
-        public PredictionEngine<SpamInputLogisticRegression, SpamPredictionLogisticRegression> predictionEngine;
+        public PredictionEngine<SpamInput, SpamPrediction> predictionEngine;
         public IReadOnlyList<TrainCatalogBase.CrossValidationResult<Microsoft.ML.Data.CalibratedBinaryClassificationMetrics>> cvResults;
 
 
@@ -22,7 +22,7 @@ namespace LogisticRegression
         var context = new MLContext();
 
             //dane z pliku mapowane na SpamInput
-            var data = context.Data.LoadFromTextFile<SpamInputLogisticRegression>(
+            var data = context.Data.LoadFromTextFile<SpamInput>(
                 path: dataPath,
                 hasHeader: true,
                 separatorChar: '\t');
@@ -46,12 +46,12 @@ namespace LogisticRegression
                         { NgramLength = 2, UseAllLengths = true },
                         CharFeatureExtractor = new Microsoft.ML.Transforms.Text.WordBagEstimator.Options
                         { NgramLength = 3, UseAllLengths = false },
-                    }, nameof(SpamInputLogisticRegression.Message)))
+                    }, nameof(SpamInput.Message)))
 
                 //krok 3: klasyfikacja za pomocą skalibrowanej regresji logistycznej
                 .Append(context.BinaryClassification.Trainers.SdcaLogisticRegression(
                     ));
-
+            
 
             //k-fold krosowa walidacja która ma na celu użycie 5 krotne tych samych danych ale w innym rozkladzie
 
@@ -71,7 +71,7 @@ namespace LogisticRegression
                 scoreColumnName: "Score");
 
             predictionEngine =
-                context.Model.CreatePredictionEngine<SpamInputLogisticRegression, SpamPredictionLogisticRegression>(
+                context.Model.CreatePredictionEngine<SpamInput, SpamPrediction>(
                     model);
 
         }

@@ -21,7 +21,9 @@ namespace SpamSmsLicencjat.Formy
         private static string stopWordsDataPath = Path.Combine(Environment.CurrentDirectory, "stopwords.txt");
         private static string dataPathCsv = Path.Combine(Environment.CurrentDirectory, "dane.csv");
 
-        PredictionEngine<SpamInputAveragedPerceptron, SpamPredictionAveragedPerceptron> predictionEngine;
+        public Microsoft.ML.Data.CalibratedBinaryClassificationMetrics metrics;
+        public PredictionEngine<SpamInput, SpamPrediction> predictionEngine;
+        public IReadOnlyList<TrainCatalogBase.CrossValidationResult<Microsoft.ML.Data.CalibratedBinaryClassificationMetrics>> cvResults;
         private bool _loading = true;
 
         public Perceptron()
@@ -39,7 +41,7 @@ namespace SpamSmsLicencjat.Formy
             var context = new MLContext();
 
             //dane z pliku mapowane na SpamInput
-            var data = context.Data.LoadFromTextFile<SpamInputAveragedPerceptron>(
+            var data = context.Data.LoadFromTextFile<SpamInput>(
                 path: dataPath,
                 hasHeader: true,
                 separatorChar: '\t');
@@ -49,65 +51,75 @@ namespace SpamSmsLicencjat.Formy
                 data,
                 testFraction: 0.2);
 
-            // transofrmacja tekstu
-            var dataProcessPipeline = context.Transforms.Conversion.MapValueToKey("Label", "Label")
-                .Append(context.Transforms.Text.FeaturizeText("FeaturesText",
+            //ustawiamy pipeline
+            //krok 1: zamieniamy spam i ham wartosci na true i false
+            var pipeline = context.Transforms.CustomMapping<FromLabel, ToLabel>(
+                    (input, output) => { output.Label = input.RawLabel == "spam"; },
+                    contractName: "MyLambda")
+
+                //krok 2: poprawienie tekstu który został przetwarzany - normalizacja , usuniecie stopwordsow , lowercase , usuniecie znakow , TF-IDF , tokenizacja kazdego slowa (zeby bardziej bylo zrozumiale dla komputera)
+                .Append(context.Transforms.Text.FeaturizeText(outputColumnName: "Features",
                     new Microsoft.ML.Transforms.Text.TextFeaturizingEstimator.Options
                     {
                         WordFeatureExtractor = new Microsoft.ML.Transforms.Text.WordBagEstimator.Options
                         { NgramLength = 2, UseAllLengths = true },
                         CharFeatureExtractor = new Microsoft.ML.Transforms.Text.WordBagEstimator.Options
                         { NgramLength = 3, UseAllLengths = false },
-                    }, "Message"))
-                .Append(context.Transforms.CopyColumns("Features", "FeaturesText"))
-                .Append(context.Transforms.NormalizeLpNorm("Features", "Features"))
-                .AppendCacheCheckpoint(context);
+                    }, nameof(SpamInput.Message)))
 
-            // ustaw aalgorytm
-            var trainer = context.MulticlassClassification.Trainers.OneVersusAll(
-                    context.BinaryClassification.Trainers.AveragedPerceptron(labelColumnName: "Label",
-                        numberOfIterations: 10, featureColumnName: "Features"), labelColumnName: "Label")
-                .Append(context.Transforms.Conversion.MapKeyToValue("PredictedLabel", "PredictedLabel"));
-            var trainingPipeLine = dataProcessPipeline.Append(trainer);
+                //krok 3: klasyfikacja za pomocą skalibrowanej regresji logistycznej
+                .Append(context.BinaryClassification.Trainers.AveragedPerceptron(
+                    ).Append(context.BinaryClassification.Calibrators.Platt()));
 
-            var crossValidationResults =
-                context.MulticlassClassification.CrossValidate(data: data, estimator: trainingPipeLine,
-                    numberOfFolds: 5);
 
-            StringBuilder sb = new StringBuilder();
+            //k-fold krosowa walidacja która ma na celu użycie 5 krotne tych samych danych ale w innym rozkladzie
 
-            //raport wyniku - sprawdzamy czy nie ma zbyt wielu szczegołów (ale jest ok , bo wcześniej wyknaliśmy NLP w kroku 2
-            foreach (var r in crossValidationResults)
-            {
-                sb.Append(
-                    $"  Średni AUC - czyli jak model jest dokładny (skala mikro): {crossValidationResults.Average(r => r.Metrics.MicroAccuracy)} \n");
-                sb.Append(
-                    $"  Średni AUC - czyli jak model jest dokładny (skala makro): {crossValidationResults.Average(r => r.Metrics.MacroAccuracy)} \n");
-            }
+            cvResults = context.BinaryClassification.CrossValidate(
+                data: partitions.TrainSet,
+                estimator: pipeline,
+                numberOfFolds: 5);
 
             //trenujemy model na zbiorze treningowym
-            Console.WriteLine("Trenowanie modelu ...");
-            var model = trainingPipeLine.Fit(partitions.TrainSet);
+            var model = pipeline.Fit(partitions.TrainSet);
 
             // ocena modelu na zbiorze testowym
-            Console.WriteLine("Ocena modelu ....");
             var predictions = model.Transform(partitions.TestSet);
-            var metrics = context.MulticlassClassification.Evaluate(
+            metrics = context.BinaryClassification.Evaluate(
                 data: predictions,
                 labelColumnName: "Label",
                 scoreColumnName: "Score");
 
-            // raport wynik
-            sb.Append($"  Dokładność makro:          {metrics.MacroAccuracy:P2} \n");
-            sb.Append($"  Dokładność mikro:          {metrics.MicroAccuracy:P2} \n");
-            sb.Append($"  Jak dużo błędów (0 = brak , 1 = same błędy:           {metrics.LogLoss:0.##} \n");
-            sb.Append($"  LogLossReduction:  {metrics.LogLossReduction:0.##} \n");
-            sb.Append(metrics.ConfusionMatrix.GetFormattedConfusionTable());
-
-
-            PredictionEngine<SpamInputAveragedPerceptron, SpamPredictionAveragedPerceptron> predictionEngine =
-                context.Model.CreatePredictionEngine<SpamInputAveragedPerceptron, SpamPredictionAveragedPerceptron>(
+            predictionEngine =
+                context.Model.CreatePredictionEngine<SpamInput, SpamPrediction>(
                     model);
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var r in cvResults)
+            {
+                sb.Append(
+                    $"  Średni AUC - czyli jak model jest dokładny: {cvResults.Average(x => x.Metrics.AreaUnderRocCurve)} \n");
+            }
+
+            // raport wynik
+
+
+            sb.Append($"  Dokładność:          {metrics.Accuracy:P2} \n");
+            sb.Append(
+                $"  Dokładność modelu (AUC) (1 = model zgaduje cały czas, 0 = myli się cały czas , 0.5 = losowe wyniki:               {metrics.AreaUnderRocCurve:P2} \n");
+            sb.Append(
+                $"  AUCPRC - metryka dla bardzo niezbalansowanych zbiorów danych która lepiej sobie radzi gdy jest więcej negatywnych wyników:             {metrics.AreaUnderPrecisionRecallCurve:P2} \n");
+            sb.Append(
+                $"  F1Score - balans pomiędzy dokładnością,a odrzuceniu. Bardzo przydatne przy niezbalansowanych zbiorach danych:           {metrics.F1Score:P2} \n");
+            sb.Append($"  Jak dużo błędów (0 = brak , 1 = same błędy:           {metrics.LogLoss:0.##} \n");
+            sb.Append($"  Ile pozytywnych:  {metrics.LogLossReduction:0.##} \n");
+            sb.Append($"  Precyzyjne precyzja: {metrics.PositivePrecision:0.##} \n");
+            sb.Append($"  Odrzut pozytywnych:    {metrics.PositiveRecall:0.##} \n");
+            sb.Append($"  Negatywne precyzja: {metrics.NegativePrecision:0.##} \n");
+            sb.Append($"  Odrzut negatywnych:    {metrics.NegativeRecall:0.##} \n");
+
+
+
 
             textBoxLog.Text = sb.ToString();
 
@@ -133,7 +145,7 @@ namespace SpamSmsLicencjat.Formy
         {
             var inputUser = textBoxCheckSpam.Text;
 
-            var message = new SpamInputAveragedPerceptron();
+            var message = new SpamInput();
             message.Message = inputUser;
 
 
@@ -141,9 +153,18 @@ namespace SpamSmsLicencjat.Formy
             var prediction = predictionEngine.Predict(message);
 
             // pokazanie wyniku
-            MessageBox.Show($"Wiadomość '{inputUser}' jest { (prediction.isSpam == "spam" ? "spam" : "not spam" )}", "Wynik");
+            MessageBox.Show($"wiadomość jest na { prediction.Probability:P2} - { IsSpamToString(prediction.IsSpam) } przetestowana twoja wiadomość:  { inputUser}", "Wynik");
             textBoxCheckSpam.Clear();
         }
+
+        private static string IsSpamToString(bool isSpam)
+        {
+            if (isSpam)
+                return "spamem";
+            else
+                return "hamem";
+        }
+
 
         private void buttonShowDiagrams_Click(object sender, EventArgs e)
         {

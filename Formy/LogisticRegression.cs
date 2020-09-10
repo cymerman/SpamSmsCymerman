@@ -20,7 +20,7 @@ namespace SpamSmsLicencjat
         private static string dataPathCsv = Path.Combine(Environment.CurrentDirectory, "dane.csv");
 
 
-        PredictionEngine<SpamInputLogisticRegression, SpamPredictionLogisticRegression> predictionEngine;
+        PredictionEngine<SpamInput, SpamPrediction> predictionEngine;
         private bool _loading = true;
 
 
@@ -121,7 +121,7 @@ namespace SpamSmsLicencjat
         {
             var inputUser = textBoxCheckSpam.Text;
 
-            var message = new SpamInputLogisticRegression();
+            var message = new SpamInput();
             message.Message = inputUser;
 
 

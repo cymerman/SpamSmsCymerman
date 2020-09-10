@@ -2,7 +2,7 @@
 
 namespace SpamSmsLicencjat.Klasy_pomocnicze
 {
-    public class SpamPredictionLogisticRegression
+    public class SpamPrediction
     {
         [ColumnName("PredictedLabel")] public bool IsSpam { get; set; }
         public float Score { get; set; }
