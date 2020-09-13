@@ -279,11 +279,11 @@ namespace SpamSmsLicencjat
 
           
             var hamTermFrequencies = wiadomoscWordVecDf.Where(
-                x => x.Value.GetAs<int>("czy_ham") == 1
+                x => x.Value.GetAs<int>("czy_ham") == 0
             ).Sum().Sort().Reversed.Where(x => x.Key != "czy_ham");
 
             var spamTermFrequencies = wiadomoscWordVecDf.Where(
-                x => x.Value.GetAs<int>("czy_ham") == 0
+                x => x.Value.GetAs<int>("czy_ham") == 1
             ).Sum().Sort().Reversed;
 
             var hamTermProportions = hamTermFrequencies / hamSmsCount;
@@ -293,7 +293,7 @@ namespace SpamSmsLicencjat
             File.WriteAllLines(
                Path.Combine(Environment.CurrentDirectory, "ham-czestotliwosc.csv"),
                 hamTermFrequencies.Keys.Zip(
-                    hamTermFrequencies.Values, (a, b) => string.Format("{0},{1}", a, b)
+                    hamTermFrequencies.Values, (a, b) => string.Format($"{a},{b}")
                 )
             );
 
@@ -304,7 +304,7 @@ namespace SpamSmsLicencjat
             File.WriteAllLines(
                 Path.Combine(Environment.CurrentDirectory, "spam-czestotliwosc.csv"),
                 spamTermFrequencies.Keys.Zip(
-                    spamTermFrequencies.Values, (a, b) => string.Format("{0},{1}", a, b)
+                    spamTermFrequencies.Values, (a, b) => string.Format($"{a},{b}")
                 )
             );
 
