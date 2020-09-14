@@ -36,7 +36,7 @@ namespace LogisticRegression
             //krok 1: zamieniamy spam i ham wartosci na true i false
             var pipeline = context.Transforms.CustomMapping<FromLabel, ToLabel>(
                     (input, output) => { output.Label = input.RawLabel == "spam" ? true : false; },
-                    contractName: "MyLambda")
+                    contractName: "checkSpam")
 
                 //krok 2: poprawienie tekstu który został przetwarzany - normalizacja , usuniecie stopwordsow , lowercase , usuniecie znakow , TF-IDF , tokenizacja kazdego slowa (zeby bardziej bylo zrozumiale dla komputera)
                 .Append(context.Transforms.Text.FeaturizeText(outputColumnName: "Features",

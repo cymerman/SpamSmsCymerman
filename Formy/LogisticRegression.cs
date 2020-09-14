@@ -199,10 +199,10 @@ namespace SpamSmsLicencjat
             );
 
             var barChart = DataBarBox.Show(
-                new string[] { "Ham", "Spam" },
+                new string[] {"Spam" , "Ham" },
                 new double[] {
-                    hamSmsCount,
-                    spamSmsCount
+                    spamSmsCount,
+                    hamSmsCount
                 }
             );
             barChart.SetTitle("Ham vs. Spam ogólny rozkład");

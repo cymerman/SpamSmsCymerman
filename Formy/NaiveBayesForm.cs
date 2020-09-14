@@ -155,7 +155,7 @@ namespace SpamSmsLicencjat
             }
 
             Console.WriteLine("\n---- Wielkość ----");
-            Console.WriteLine("# przykłady: {0}, # wprowadzenia: {1}, # wyniki: {2}", numberOfSamples, numberOfInputs, numberOfOutputs);
+            Console.WriteLine($"# ilość: {numberOfSamples}");
             Console.WriteLine("błąd trenowania: {0}", trainingError);
             Console.WriteLine("błąd walidacjir: {0}\n", validationError);
 

@@ -55,7 +55,7 @@ namespace SpamSmsLicencjat.Formy
             //krok 1: zamieniamy spam i ham wartosci na true i false
             var pipeline = context.Transforms.CustomMapping<FromLabel, ToLabel>(
                     (input, output) => { output.Label = input.RawLabel == "spam"; },
-                    contractName: "MyLambda")
+                    contractName: "checkSpam")
 
                 //krok 2: poprawienie tekstu który został przetwarzany - normalizacja , usuniecie stopwordsow , lowercase , usuniecie znakow , TF-IDF , tokenizacja kazdego slowa (zeby bardziej bylo zrozumiale dla komputera)
                 .Append(context.Transforms.Text.FeaturizeText(outputColumnName: "Features",
@@ -65,6 +65,7 @@ namespace SpamSmsLicencjat.Formy
                         { NgramLength = 2, UseAllLengths = true },
                         CharFeatureExtractor = new Microsoft.ML.Transforms.Text.WordBagEstimator.Options
                         { NgramLength = 3, UseAllLengths = false },
+                        
                     }, nameof(SpamInput.Message)))
 
                 //krok 3: klasyfikacja za pomocą skalibrowanej regresji logistycznej
@@ -224,7 +225,7 @@ namespace SpamSmsLicencjat.Formy
             );
 
             var barChart = DataBarBox.Show(
-                new string[] { "Ham", "Spam" },
+                new string[] {"Spam" , "Ham" },
                 new double[] {
                     spamSmsCount,
                     hamSmsCount
