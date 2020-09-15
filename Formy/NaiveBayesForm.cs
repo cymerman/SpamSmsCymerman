@@ -157,7 +157,7 @@ namespace SpamSmsLicencjat
             Console.WriteLine("\n---- Wielkość ----");
             Console.WriteLine($"# ilość: {numberOfSamples}");
             Console.WriteLine("błąd trenowania: {0}", trainingError);
-            Console.WriteLine("błąd walidacjir: {0}\n", validationError);
+            Console.WriteLine("błąd walidacji: {0}\n", validationError);
 
 
             float truePositive = (float)gcm.Matrix[1, 1];
@@ -170,9 +170,7 @@ namespace SpamSmsLicencjat
                 "Dokładność: {0}",
                 (truePositive + trueNegative) / numberOfSamples
             );
-
-            Console.WriteLine($"Sprawdzenie dokładność z biblioteki {  gcm.Accuracy}");
-
+            
             Console.WriteLine("Precyzja: {0}", (truePositive / (truePositive + falsePositive)));
 
             Console.WriteLine("Odrzut: {0}", (truePositive / (truePositive + falseNegative)));

@@ -107,22 +107,21 @@ namespace SpamSmsLicencjat.Formy
 
             sb.Append($"  Dokładność:          {metrics.Accuracy:P2} \n");
             sb.Append(
-                $"  Dokładność modelu (AUC) (1 = model zgaduje cały czas, 0 = myli się cały czas , 0.5 = losowe wyniki:               {metrics.AreaUnderRocCurve:P2} \n");
+                $"  Dokładność modelu (AUC) (1 = model zgaduje cały czas, 0 = myli się cały czas , 0.5 = losowe wyniki)               {metrics.AreaUnderRocCurve:P2} \n");
             sb.Append(
                 $"  AUCPRC - metryka dla bardzo niezbalansowanych zbiorów danych która lepiej sobie radzi gdy jest więcej negatywnych wyników:             {metrics.AreaUnderPrecisionRecallCurve:P2} \n");
             sb.Append(
                 $"  F1Score - balans pomiędzy dokładnością,a odrzuceniu. Bardzo przydatne przy niezbalansowanych zbiorach danych:           {metrics.F1Score:P2} \n");
-            sb.Append($"  Jak dużo błędów (0 = brak , 1 = same błędy:           {metrics.LogLoss:0.##} \n");
+            sb.Append($"  Jak dużo błędów (0 = brak , 1 = same błędy)           {metrics.LogLoss:0.##} \n");
             sb.Append($"  Ile pozytywnych:  {metrics.LogLossReduction:0.##} \n");
             sb.Append($"  Precyzyjne precyzja: {metrics.PositivePrecision:0.##} \n");
             sb.Append($"  Odrzut pozytywnych:    {metrics.PositiveRecall:0.##} \n");
             sb.Append($"  Negatywne precyzja: {metrics.NegativePrecision:0.##} \n");
             sb.Append($"  Odrzut negatywnych:    {metrics.NegativeRecall:0.##} \n");
-
-
-
-
+            
             textBoxLog.Text = sb.ToString();
+
+            Console.WriteLine(sb.ToString());
 
             _loading = false;
             ChangeVisibility();
