@@ -5877,11 +5877,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mateusz\\source\\repos\\SpamSmsLicencjat\\SpamSmsLicencjat\\SpamSmsLicencjat.csproj",
+      "projectUniqueName": "C:\\Users\\Mateusz\\Desktop\\Nowy folder\\SpamSmsCymerman\\SpamSmsLicencjat.csproj",
       "projectName": "SpamSmsLicencjat",
-      "projectPath": "C:\\Users\\Mateusz\\source\\repos\\SpamSmsLicencjat\\SpamSmsLicencjat\\SpamSmsLicencjat.csproj",
+      "projectPath": "C:\\Users\\Mateusz\\Desktop\\Nowy folder\\SpamSmsCymerman\\SpamSmsLicencjat.csproj",
       "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mateusz\\source\\repos\\SpamSmsLicencjat\\SpamSmsLicencjat\\obj\\",
+      "outputPath": "C:\\Users\\Mateusz\\Desktop\\Nowy folder\\SpamSmsCymerman\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

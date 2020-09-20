@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\Mateusz\\source\\repos\\SpamSmsLicencjat\\SpamSmsLicencjat\\SpamSmsLicencjat.csproj",
+    "projectUniqueName": "C:\\Users\\Mateusz\\Desktop\\Nowy folder\\SpamSmsCymerman\\SpamSmsLicencjat.csproj",
     "projectName": "SpamSmsLicencjat",
-    "projectPath": "C:\\Users\\Mateusz\\source\\repos\\SpamSmsLicencjat\\SpamSmsLicencjat\\SpamSmsLicencjat.csproj",
-    "outputPath": "C:\\Users\\Mateusz\\source\\repos\\SpamSmsLicencjat\\SpamSmsLicencjat\\obj\\",
+    "projectPath": "C:\\Users\\Mateusz\\Desktop\\Nowy folder\\SpamSmsCymerman\\SpamSmsLicencjat.csproj",
+    "outputPath": "C:\\Users\\Mateusz\\Desktop\\Nowy folder\\SpamSmsCymerman\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oTuBMqYFQLDfFeAPYJ1drGcfznmqzT+scd+uePWuRUJadEHn3zvw/NTpsKdWfq9p+PgKHz8q4oclqXbSsfAHWw==",
+  "dgSpecHash": "yGA9v/ijbqeXuKQHaFLXZPK7ujGGN7nMcVlll9rCgGKJ0XS5LHwrJjQjs1y3+b/7zH/adUA977uK2HZJv8EW2w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mateusz\\source\\repos\\SpamSmsLicencjat\\SpamSmsLicencjat\\SpamSmsLicencjat.csproj",
+  "projectFilePath": "C:\\Users\\Mateusz\\Desktop\\Nowy folder\\SpamSmsCymerman\\SpamSmsLicencjat.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mateusz\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\accord.controls\\3.8.0\\accord.controls.3.8.0.nupkg.sha512",

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Mateusz\.nuget\packages\accord\3.8.0\build\Accord.dll.config" t="Include" />
+    <e p="C:\Users\Mateusz\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Mateusz\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_.19.01" t="ExcludeRecursive" />
+    <e p="C:\Users\Mateusz\Desktop\Nowy folder\SpamSmsCymerman" t="IncludeRecursive">
+      <e p="App.config" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="dane.csv" t="Include" />
+      <e p="dane.tsv" t="Include" />
+      <e p="Formy" t="Include">
+        <e p="Form1.cs" t="Include" />
+        <e p="Form1.Designer.cs" t="Include" />
+        <e p="Form1.resx" t="Include" />
+        <e p="LogisticRegression.cs" t="Include" />
+        <e p="LogisticRegression.Designer.cs" t="Include" />
+        <e p="LogisticRegression.resx" t="Include" />
+        <e p="NaiveBayesForm.cs" t="Include" />
+        <e p="NaiveBayesForm.Designer.cs" t="Include" />
+        <e p="NaiveBayesForm.resx" t="Include" />
+        <e p="Perceptron.cs" t="Include" />
+        <e p="Perceptron.Designer.cs" t="Include" />
+        <e p="Perceptron.resx" t="Include" />
+      </e>
+      <e p="Klasy pomocnicze" t="Include">
+        <e p="FromLabel.cs" t="Include" />
+        <e p="SpamInput.cs" t="Include" />
+        <e p="SpamInputAveragedPerceptron.cs" t="Include" />
+        <e p="SpamPrediction.cs" t="Include" />
+        <e p="SpamPredictionAveragedPerceptron.cs" t="Include" />
+        <e p="ToLabel.cs" t="Include" />
+      </e>
+      <e p="LogisticRegression.cs" t="Include" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="packages.config" t="Include" />
+      <e p="Program.cs" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="AssemblyInfo.cs" t="Include" />
+        <e p="Resources.Designer.cs" t="Include" />
+        <e p="Resources.resx" t="Include" />
+        <e p="Settings.Designer.cs" t="Include" />
+        <e p="Settings.settings" t="Include" />
+      </e>
+      <e p="README.md" t="Include" />
+      <e p="SpamSmsLicencjat.csproj" t="IncludeRecursive" />
+      <e p="stopwords.txt" t="Include" />
+    </e>
+  </component>
+</project>
