@@ -11,7 +11,7 @@
           "Accord.Controls": "3.8.0",
           "Deedle": "2.0.1",
           "FSharp.Core": "4.3.1",
-          "LogisticRegression": "1.0.0"
+          "Microsoft.ML": "1.5.2"
         },
         "runtime": {
           "SpamSmsLicencjat.dll": {}
@@ -160,41 +160,41 @@
           "System.Threading": "4.3.0"
         }
       },
-      "Microsoft.ML/1.5.0": {
+      "Microsoft.ML/1.5.2": {
         "dependencies": {
-          "Microsoft.ML.CpuMath": "1.5.0",
-          "Microsoft.ML.DataView": "1.5.0",
+          "Microsoft.ML.CpuMath": "1.5.2",
+          "Microsoft.ML.DataView": "1.5.2",
           "Newtonsoft.Json": "10.0.3",
           "System.CodeDom": "4.4.0",
           "System.Collections.Immutable": "1.5.0",
           "System.Memory": "4.5.1",
           "System.Reflection.Emit.Lightweight": "4.3.0",
-          "System.Threading.Tasks.Dataflow": "4.8.0"
+          "System.Threading.Channels": "4.7.1"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.ML.Core.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.5.28926.5"
+            "fileVersion": "1.5.29311.2"
           },
           "lib/netstandard2.0/Microsoft.ML.Data.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.5.28926.5"
+            "fileVersion": "1.5.29311.2"
           },
           "lib/netstandard2.0/Microsoft.ML.KMeansClustering.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.5.28926.5"
+            "fileVersion": "1.5.29311.2"
           },
           "lib/netstandard2.0/Microsoft.ML.PCA.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.5.28926.5"
+            "fileVersion": "1.5.29311.2"
           },
           "lib/netstandard2.0/Microsoft.ML.StandardTrainers.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.5.28926.5"
+            "fileVersion": "1.5.29311.2"
           },
           "lib/netstandard2.0/Microsoft.ML.Transforms.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.5.28926.5"
+            "fileVersion": "1.5.29311.2"
           }
         },
         "runtimeTargets": {
@@ -211,24 +211,24 @@
           "runtimes/win-x64/native/LdaNative.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "1.5.28926.5"
+            "fileVersion": "1.5.29311.2"
           },
           "runtimes/win-x86/native/LdaNative.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "1.5.28926.5"
+            "fileVersion": "1.5.29311.2"
           }
         }
       },
-      "Microsoft.ML.CpuMath/1.5.0": {
+      "Microsoft.ML.CpuMath/1.5.2": {
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.ML.CpuMath.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.5.28926.5"
+            "fileVersion": "1.5.29311.2"
           }
         }
       },
-      "Microsoft.ML.DataView/1.5.0": {
+      "Microsoft.ML.DataView/1.5.2": {
         "dependencies": {
           "System.Collections.Immutable": "1.5.0",
           "System.Memory": "4.5.1"
@@ -236,7 +236,7 @@
         "runtime": {
           "lib/netstandard2.0/Microsoft.ML.DataView.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.5.28926.5"
+            "fileVersion": "1.5.29311.2"
           }
         }
       },
@@ -954,6 +954,14 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
+      "System.Threading.Channels/4.7.1": {
+        "runtime": {
+          "lib/netcoreapp3.0/System.Threading.Channels.dll": {
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.700.20.21406"
+          }
+        }
+      },
       "System.Threading.Tasks/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -961,7 +969,6 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Threading.Tasks.Dataflow/4.8.0": {},
       "System.Threading.Tasks.Extensions/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -1073,14 +1080,6 @@
             "locale": "zh-tw"
           }
         }
-      },
-      "LogisticRegression/1.0.0": {
-        "dependencies": {
-          "Microsoft.ML": "1.5.0"
-        },
-        "runtime": {
-          "LogisticRegression.dll": {}
-        }
       }
     }
   },
@@ -1146,26 +1145,26 @@
       "path": "microsoft.csharp/4.3.0",
       "hashPath": "microsoft.csharp.4.3.0.nupkg.sha512"
     },
-    "Microsoft.ML/1.5.0": {
+    "Microsoft.ML/1.5.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ZjUJCH3bEAAkzy7XLzK2IpPBTRS0weXQmbi+UVr8D2eBVY0Ty8RksvVgkmXcfDOV1CFRxG28krNkTjdjDqNKTg==",
-      "path": "microsoft.ml/1.5.0",
-      "hashPath": "microsoft.ml.1.5.0.nupkg.sha512"
+      "sha512": "sha512-hxMFUp5nFHXiB/KqLJA6yNG2tDFVZ27SJ+rG7bxVmN0sUvQvuyziOiFWO95nVshJCC+stMl+NOtep6Y2b8wF5Q==",
+      "path": "microsoft.ml/1.5.2",
+      "hashPath": "microsoft.ml.1.5.2.nupkg.sha512"
     },
-    "Microsoft.ML.CpuMath/1.5.0": {
+    "Microsoft.ML.CpuMath/1.5.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-RSERjrAsv8xNt9vec+iMiWcH24QqLyi7Ka7Vwc9DRmmI+q1bmVh0CouGfi1sj8Bi8H9wbzMvb4+ZLJGgxvmHuA==",
-      "path": "microsoft.ml.cpumath/1.5.0",
-      "hashPath": "microsoft.ml.cpumath.1.5.0.nupkg.sha512"
+      "sha512": "sha512-14UKxwWkeYpZsik9qqff1VSgHONuOj2VnjoAZ7fbhqY+GBlhq+yQeQSjLAdi6OiXXOkF9KPX5F2azMisBBzddg==",
+      "path": "microsoft.ml.cpumath/1.5.2",
+      "hashPath": "microsoft.ml.cpumath.1.5.2.nupkg.sha512"
     },
-    "Microsoft.ML.DataView/1.5.0": {
+    "Microsoft.ML.DataView/1.5.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mKgNqg6aQUyVyTSitNkhPnUcmnEW3P93F0CaLSjOCpYr6hUkYqGZh76YPt5idSuZ2sI4JcvgelszLZT+wrQGkQ==",
-      "path": "microsoft.ml.dataview/1.5.0",
-      "hashPath": "microsoft.ml.dataview.1.5.0.nupkg.sha512"
+      "sha512": "sha512-jiIj1ikGnH7ge1rx5K2RVetjIhKJtEQjwTuyOw5hKgTspOTdxlA5cnvfOIKUW/2EOKBkwlKEIkcA66y6fiCrvw==",
+      "path": "microsoft.ml.dataview/1.5.2",
+      "hashPath": "microsoft.ml.dataview.1.5.2.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
@@ -1727,19 +1726,19 @@
       "path": "system.threading/4.3.0",
       "hashPath": "system.threading.4.3.0.nupkg.sha512"
     },
+    "System.Threading.Channels/4.7.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6akRtHK/wab3246t4p5v3HQrtQk8LboOt5T4dtpNgsp3zvDeM4/Gx8V12t0h+c/W9/enUrilk8n6EQqdQorZAA==",
+      "path": "system.threading.channels/4.7.1",
+      "hashPath": "system.threading.channels.4.7.1.nupkg.sha512"
+    },
     "System.Threading.Tasks/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
       "path": "system.threading.tasks/4.3.0",
       "hashPath": "system.threading.tasks.4.3.0.nupkg.sha512"
-    },
-    "System.Threading.Tasks.Dataflow/4.8.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-PSIdcgbyNv7FZvZ1I9Mqy6XZOwstYYMdZiXuHvIyc0gDyPjEhrrP9OvTGDHp+LAHp1RNSLjPYssyqox9+Kt9Ug==",
-      "path": "system.threading.tasks.dataflow/4.8.0",
-      "hashPath": "system.threading.tasks.dataflow.4.8.0.nupkg.sha512"
     },
     "System.Threading.Tasks.Extensions/4.3.0": {
       "type": "package",
@@ -1782,11 +1781,6 @@
       "sha512": "sha512-TcZaInxUjYMJDWIaYvs/CgpssfVJQMqiry8GPP70klyheP4tYSQXFWi5HYwJvqao+epeUu3bsk3yDb3Nf/hVWw==",
       "path": "zedgraph/5.1.7",
       "hashPath": "zedgraph.5.1.7.nupkg.sha512"
-    },
-    "LogisticRegression/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }

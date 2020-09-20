@@ -20,9 +20,6 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\LogisticRegression\LogisticRegression.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Update="dane.tsv">
